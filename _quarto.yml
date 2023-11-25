@@ -1,12 +1,13 @@
 project:
   type: website
   output-dir: docs
+  pre-render: prepare-data.py
+  post-render: fix-dates.py
 
 website:
   title: "npfinley.github.io"
   navbar:
     right:
-      - about.qmd
       - icon: github
         href: https://github.com/
       - icon: twitter
