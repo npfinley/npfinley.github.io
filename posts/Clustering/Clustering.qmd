@@ -1,0 +1,9 @@
+---
+title: "Clustering"
+date: now
+author: "Patrick Finley"
+cache: true
+format: 
+  html: 
+    code-fold: true
+---
