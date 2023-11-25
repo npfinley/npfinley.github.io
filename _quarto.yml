@@ -5,7 +5,7 @@ project:
   post-render: fix-dates.py
 
 website:
-  title: "npfinley.github.io"
+  title: "Patrick Finley's Blog"
   navbar:
     right:
       - icon: github
