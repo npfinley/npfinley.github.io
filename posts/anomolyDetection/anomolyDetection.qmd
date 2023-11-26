@@ -105,9 +105,9 @@ plot_gaussian_mixture(gm, X)
 plt.show()
 ```
 
-This data has been generated using sklearn's makeblob function. There are four distinct clusters in this data which I have used a gaussian matrix to seperate from each other. The crosses mark the centroids of each of the distinct clusters. The red dashed lines represent the decision boundaries of each of the clusters in between which each point is considered to be in that cluster.
+This data has been generated using sklearn's makeblob function. There are four distinct clusters in this data which I have used a Gaussian matrix to separate from each other. The crosses mark the centroids of each of the distinct clusters. The red dashed lines represent the decision boundaries of each of the clusters in between which each point is considered to be in that cluster.
 
-It is pretty clear that some of these points are very distant from their respective cluster or potentially between a few different ones. We will probably want to take note of these or even exclude them from our considerations as we work with the data. The simplest way to do this is to essentially set a threshhold beyond which if any points do not meet the threshold they will be considered an outlier. This threshold can be determined by many things. If we are working in a production environment or somewhere were the data input could be wrong we might expect a specific percentage of the data to be anomolies or outliers. We can use this expected rate as our threshold.
+It is pretty clear that some of these points are very distant from their respective cluster or potentially between a few different ones. We will probably want to take note of these or even exclude them from our considerations as we work with the data. The simplest way to do this is to essentially set a threshold beyond which if any points do not meet the threshold they will be considered an outline. This threshold can be determined by many things. If we are working in a production environment or somewhere were the data input could be wrong we might expect a specific percentage of the data to be anomalies or outlines. We can use this expected rate as our threshold.
 
 With this in mind, we will first calculate the density or log-likelihood of each sample. Then we will calculate what the threshold value is and apply it to the data to figure out which points do not meet it.
 
@@ -116,9 +116,7 @@ With this in mind, we will first calculate the density or log-likelihood of each
 densities = gm.score_samples(X)
 density_threshold = np.percentile(densities, 2)
 anomalies = X[densities < density_threshold]
-```
 
-```{python}
 #| tags: []
 plt.figure(figsize=(8, 4))
 
@@ -130,4 +128,4 @@ plt.ylim(top=5.1)
 plt.show()
 ```
 
-With the points seperated, we can use matplot to plot markers for each of the outliers as can be seen above marked by the red "x" marks. By marking these we can see that most of the points do in fact sit far from their respective culster centroids which makes them less likely to be in a cluster and more likely to be an outlier. Then we could take this data and try to understand where they are coming from. This can give us information about our processes to reduce the chance for errors in the future or maybe understand a different user we are not currently catering to well.
+With the points separated, we can use matplot to plot markers for each of the outliers as can be seen above marked by the red "x" marks. By marking these we can see that most of the points do in fact sit far from their respective cluster centroids which makes them less likely to be in a cluster and more likely to be an outlier. Then we could take this data and try to understand where they are coming from. This can give us information about our processes to reduce the chance for errors in the future or maybe understand a different user we are not currently catering to well.
