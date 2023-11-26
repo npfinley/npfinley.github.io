@@ -7,7 +7,7 @@ website:
   navbar:
     right:
       - icon: github
-        href: https://github.com/
+        href: https://github.com/npfinley/npfinley.github.io
 format:
   html:
     theme: cosmo
