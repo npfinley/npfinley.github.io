@@ -8,6 +8,10 @@ website:
     right:
       - icon: github
         href: https://github.com/npfinley/npfinley.github.io
+      - text: "Home"
+        file: index.qmd
+        
+        
 format:
   html:
     theme: cosmo
