@@ -3,7 +3,8 @@
     "listing": "/index.html",
     "items": [
       "/posts/anomolyDetection/anomolyDetection.html",
-      "/posts/Clustering/clustering.html"
+      "/posts/Clustering/clustering.html",
+      "/posts/linearAndNonlinear/linearAndNonlinear.html"
     ]
   },
   {

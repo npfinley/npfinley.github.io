@@ -1,0 +1,149 @@
+---
+title: Linear and Non-linear Techniques
+jupyter: python3
+format: 
+    html:
+      code-fold: true
+---
+
+Linear regression is one of the oldest and common modeling approaches that exists. In its simplest form the goal is to help relate the change in scalar response between two variables. This can help us understand the relationship two different variable have and potentially understand if certain factors have bigger impacts than others.
+
+To help demonstrate this I will use the diabetes data base provided by sklearn. This data base has 10 different variables that are mean centered and scaled by the standard deviation times the square root of n_samples. There is also target variable that tracks the progression of diabetes in the patients over the course of one year. We can use a linear regression to figure out the effect of the 10 different variables on the progression of the disease as seen below.
+
+```{python}
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn import metrics
+from sklearn import  datasets, linear_model, tree
+
+def plotDiabetes1(setNumber, xlabel):
+
+    diabetes_X, diabetes_y = datasets.load_diabetes(return_X_y=True)
+
+    diabetes_X = diabetes_X[:, np.newaxis, setNumber]
+
+    diabetes_X_train = diabetes_X[:-20]
+    diabetes_X_test = diabetes_X[-20:]
+
+    diabetes_y_train = diabetes_y[:-20]
+    diabetes_y_test = diabetes_y[-20:]
+
+    regr = linear_model.LinearRegression()
+
+    regr.fit(diabetes_X_train, diabetes_y_train)
+
+    diabetes_y_pred = regr.predict(diabetes_X_test)
+
+    #ax= plt.subplot(2,2,3)
+    plt.scatter(diabetes_X_test, diabetes_y_test, color="black")
+    plt.plot(diabetes_X_test, diabetes_y_pred, color="blue", linewidth=3)
+
+    plt.title("Impact of " + xlabel)
+    plt.xlabel("Standardized " + xlabel)
+    plt.ylabel("target")
+    plt.grid()
+    plt.show()
+    
+    
+
+    
+bmiPlot = plotDiabetes1(2, "BMI")
+bpPlot = plotDiabetes1(3, "Blood Pressure")
+agePlot = plotDiabetes1(0, "Age")
+
+```
+
+These graphs are scatters of the test data with an overlay of the regression line on top. From this we can see that there is some trend, but there is a lot of variance. The regression being fit helps us to better understand the relationship. We can see that each of these lines has a positive slope telling us that there is some relationship between the progression and the different factors.
+
+```{python}
+#| tags: []
+def plotDiabetes2(setNumber, xlabel, color):
+
+    diabetes_X, diabetes_y = datasets.load_diabetes(return_X_y=True)
+
+    diabetes_X = diabetes_X[:, np.newaxis, setNumber]
+
+    diabetes_X_train = diabetes_X[:-20]
+    diabetes_X_test = diabetes_X[-20:]
+
+    diabetes_y_train = diabetes_y[:-20]
+    diabetes_y_test = diabetes_y[-20:]
+
+    regr = linear_model.LinearRegression()
+
+    regr.fit(diabetes_X_train, diabetes_y_train)
+
+    diabetes_y_pred = regr.predict(diabetes_X_test)
+
+    ax= plt.subplot(2,2,3)
+    #plt.scatter(diabetes_X_test, diabetes_y_test, color="black")
+    plt.plot(diabetes_X_test, diabetes_y_pred, color= color, linewidth=3, label= xlabel)
+    
+    
+    
+    plt.legend(loc="upper left")
+    plt.title("Impact of Different Contributers")
+    plt.xlabel("Standardized Markers")
+    plt.ylabel("target")
+    plt.grid()
+    
+    
+
+    
+bmiPlot = plotDiabetes2(2, "BMI", "Blue")
+bpPlot = plotDiabetes2(3, "BP", "Red")
+agePlot = plotDiabetes2(0, "Age", "Black")
+```
+
+If we plot the regression lines of the three factors all on one graph we can get an idea of which factors have more impact on the outcomes of the patients. From this though we can tell that each one has some impact we can very clearly see that BMI and blood pressure are better indicators of the progression of the disease over the course of a year. This information can give researchers a better idea of what factors to look into and doctors ideas of what factors they should look for in patients that come to see them.
+
+A linear regression might work very well for certain applications, but sometimes it is not enough to truly understand the complexity of the problem. So we can also use non-linear approaches to help us with these other problems. A good example of one of these techniques would be a decision tree. While a linear regression is great for a few variables with one specific target outcome, a decision tree can help us classify data into different groups to help demonstrate trends in the data that may be more complex to recognize.
+
+To demonstrate this, I will be using the penguins data set provided in Seaborn. The data represents three species of penguins and the general characteristics of 344 penguins of those species. We can look at these characteristics and use them to try and determine if there are any specific parameters that distinguish the different species. A decision tree can help us with this as it will go through the three given parameters (bill length/depth and flipper length) and try to determine any distinct differences to break up the data between species. Due to the fact that a decision tree breaks up its processing into different if/then statements it does not work in a linear fashion like the linear regression does.
+
+```{python}
+#| tags: []
+import seaborn as sb
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split
+
+from sklearn.tree import plot_tree
+
+
+penguins = sb.load_dataset("penguins")
+
+y= penguins.species
+x= np.array([[penguins.bill_length_mm, penguins.bill_depth_mm, penguins.flipper_length_mm]])
+x = x.reshape(x.shape[1:])
+x = x.transpose()
+
+len(penguins.species.values)
+
+
+X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=27) 
+
+clf = DecisionTreeClassifier(max_depth=2, random_state=42)
+
+# Train Decision Tree Classifer
+clf = clf.fit(X_train,y_train)
+
+#Predict the response for test dataset
+y_pred = clf.predict(X_test)
+
+
+
+
+
+
+plot_tree(
+    clf,
+    filled=True,
+    feature_names=["Bill Length (mm)", "Bill Depth (mm)", "Flipper Length (mm)"],
+    rounded=True,
+    
+);
+
+print("Accuracy:",metrics.accuracy_score(y_test, y_pred))  
+```
+
+Above you can see the tree and how it made its decision to break up the penguins into three distinct class. You can see that initially it compared the flipper length, then it went to bill depth to try and break apart the data. If we needed we could have the tree go through more branches to try to see if the results could get better. However, we want to be careful to not over fit the data. To tell how well the model is doing we can take a look at the accuracy by comparing the actual results of the test data to the predicted values. From this as seen above, we can see that the accuracy is 99% which is fairly good. With this in mind we would not want to go deeper with the tree, but we can see that the tree has done a great job of helping us analyze this data in a non-linear manner.
