@@ -3,6 +3,7 @@
     "listing": "/index.html",
     "items": [
       "/posts/anomolyDetection/anomolyDetection.html",
+      "/posts/classification/classification.html",
       "/posts/Clustering/clustering.html",
       "/posts/linearAndNonlinear/linearAndNonlinear.html"
     ]
