@@ -21,4 +21,8 @@ editor: visual
 
 execute: 
   cache: false
+  
+listing:
+  type: table
+
 
