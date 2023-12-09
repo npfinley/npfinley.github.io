@@ -1,0 +1,9 @@
+{
+  "listing": "/index.html",
+  "items": [
+    "/posts/anomolyDetection/anomolyDetection.html",
+    "/posts/classification/classification.html",
+    "/posts/clustering/clustering.html",
+    "/posts/linearAndNonlinear/linearAndNonlinear.html"
+  ]
+}

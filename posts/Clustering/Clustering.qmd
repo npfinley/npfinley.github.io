@@ -63,7 +63,7 @@ When considering what clustering technque there are three that came to mind: KMe
 
 There are two main criteria that we want to give to the program in order to set up the gaussian matrix: number of mixture components and the number of initilizations to perform. There are other parameters we can set such as the convariance type, but for this particular data set the defaults for this should be good.
 
-The number of mixture components should match out expected number of clusters. Given that there are pretty clearly four distinct clusters we could just use four for the number of mixture components. However, we can also plot either the Bayesian Information Criterion (BIC) or Akaike Information Criterion (AIC) across multiple different values to figure out what this value should be. \*\*\*\*\*\*\*\*\* MORE HERE FOR THE CALCS \*\*\*\*\*\*\*\*\*\*\*\*
+The number of mixture components should match out expected number of clusters. Given that there are pretty clearly four distinct clusters we could just use four for the number of mixture components. However, we can also plot either the Bayesian Information Criterion (BIC) or Akaike Information Criterion (AIC) across multiple different values to figure out what this value should be.
 
 ```{python}
 #| tags: []
