@@ -30,7 +30,7 @@ from sklearn.datasets import make_blobs
 import numpy as np
 ```
 
-Clustering is a technique used to help us find trends in complex data sets that might be hard to identify manually. With the help of machine learning techniques such as DBScan, KMeans, Gausian Matrix and others we can group the data into clusters that we can then work to interpret. Classification is another technique that also breaks up data sets into distinct groups based on different criteria, but with classification there tends to be groups we are setting out to fit the data into. Clustering on the other hand works with data that we have little to no information about before we start working with. With clustering the goal is to look at the clusters and figure out what separates on cluster from another.
+Clustering is a technique used to help us find trends in complex data sets that might be hard to identify manually. With the help of machine learning techniques such as DBScan, KMeans, Gausian Matrix and others we can group the data into clusters that we can then work to interpret. Classifcation is another technique that also breaks up data sets into distinct groups based on different criteria, but with classification there tends to be groups we are setting out to fit the data into. Clustering on the other hand works with data that we have little to no information about before we start working with. With clustering the goal is to look at the clusters and figure out what seperates on cluster from another.
 
 For example clustering might be used to help inform an e-commerce site on what they may want to add or adjust based on the tendencies of current customers. They could take the purchase history or viewing history of users and generate clusters. From there, they can analyze them to see if there is specific interest in a certain types of products. From there they could better design their website to meet the needs of their customers.
 
@@ -63,7 +63,7 @@ When considering what clustering technque there are three that came to mind: KMe
 
 There are two main criteria that we want to give to the program in order to set up the gaussian matrix: number of mixture components and the number of initilizations to perform. There are other parameters we can set such as the convariance type, but for this particular data set the defaults for this should be good.
 
-The number of mixture components should match out expected number of clusters. Given that there are pretty clearly four distinct clusters we could just use four for the number of mixture components. However, we can also plot either the Bayesian Information Criterion (BIC) or Akaike Information Criterion (AIC) across multiple different values to figure out what this value should be.
+The number of mixture components should match out expected number of clusters. Given that there are pretty clearly four distinct clusters we could just use four for the number of mixture components. However, we can also plot either the Bayesian Information Criterion (BIC) or Akaike Information Criterion (AIC) across multiple different values to figure out what this value should be. \*\*\*\*\*\*\*\*\* MORE HERE FOR THE CALCS \*\*\*\*\*\*\*\*\*\*\*\*
 
 ```{python}
 #| tags: []
@@ -142,17 +142,8 @@ plot_gaussian_mixture(gm, X)
 plt.show()
 ```
 
-Once we have fit the data we can go ahead and plot it again along with the centroids and decision boundaries the algorithm came up with. Now, we can see that the algorithm did a very good job of fitting to the four distinct clusters. We can see the red dashed lines around each of the more densely packed clusters and the boundary between the two more sparsely packed clusters. From this, we can start analyzing the clusters to see distinct similarity between the groups.
+Once we have fit the data we can go ahead and plot it again along with the centroids and decision boundries the algorithm came up with. Now, we can see that the algorithm did a very good job of fitting to the four distinct clusters. We can see the red dashed lines around each of the more densely packed clusters and the boundry between the two more sparsely packed clusters. From this, we can start analyzing the clusters to see distinct similariets between the groups.
 
-For example, if this data was the search habits of different users on an online pharmacy we might be able to see that distinct age ranges are interested in certain products. This might give us the idea to potentially break up products based on age. I we were using some sort of dimensional reduction then maybe we could see that other factors may impact interest such as weight or gender, but that will have to wait till a later blog post.
+For example, if this data was the search habits of different users on an online pharmacy we might be able to see that distinct age ranges are interested in certain products. This might give us the idea to potentially break up products based on age. I we were using some sort of dimendionality reduction then maybe we could see that other factors may impact interest such as weight or gender, but that will have to wait till a later blog post.
 
-
-
-
-Information used to complete this post was taken from:
-https://github.com/ageron/handson-ml3
-
-
-
-
-
+Information used to complete this post was taken from: https://github.com/ageron/handson-ml3
