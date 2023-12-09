@@ -129,3 +129,5 @@ plt.show()
 ```
 
 With the points separated, we can use matplot to plot markers for each of the outliers as can be seen above marked by the red "x" marks. By marking these we can see that most of the points do in fact sit far from their respective cluster centroids which makes them less likely to be in a cluster and more likely to be an outlier. Then we could take this data and try to understand where they are coming from. This can give us information about our processes to reduce the chance for errors in the future or maybe understand a different user we are not currently catering to well.
+
+Information used to complete this post was taken from: https://github.com/ageron/handson-ml3

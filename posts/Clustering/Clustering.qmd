@@ -142,6 +142,17 @@ plot_gaussian_mixture(gm, X)
 plt.show()
 ```
 
-Once we have fit the data we can go ahead and plot it again along with the centroids and decision boundries the algorithm came up with. Now, we can see that the algorithm did a very good job of fitting to the four distinct clusters. We can see the red dashed lines around each of the more densely packed clusters and the boundry between the two more sparsely packed clusters. From this, we can start analyzing the clusters to see distinct similariets between the groups.
+Once we have fit the data we can go ahead and plot it again along with the centroids and decision boundaries the algorithm came up with. Now, we can see that the algorithm did a very good job of fitting to the four distinct clusters. We can see the red dashed lines around each of the more densely packed clusters and the boundary between the two more sparsely packed clusters. From this, we can start analyzing the clusters to see distinct similarity between the groups.
 
-For example, if this data was the search habits of different users on an online pharmacy we might be able to see that distinct age ranges are interested in certain products. This might give us the idea to potentially break up products based on age. I we were using some sort of dimendionality reduction then maybe we could see that other factors may impact interest such as weight or gender, but that will have to wait till a later blog post.
+For example, if this data was the search habits of different users on an online pharmacy we might be able to see that distinct age ranges are interested in certain products. This might give us the idea to potentially break up products based on age. I we were using some sort of dimensional reduction then maybe we could see that other factors may impact interest such as weight or gender, but that will have to wait till a later blog post.
+
+
+
+
+Information used to complete this post was taken from:
+https://github.com/ageron/handson-ml3
+
+
+
+
+
